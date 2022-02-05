@@ -4,9 +4,13 @@ namespace App\Entity;
 
 use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
+/**
+ * @UniqueEntity(fields={"email"}, message="Il y a déjà un compte avec cet email")
+ */
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
@@ -25,7 +29,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $password;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
-    private $latitutde;
+    private $latitude;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private $longitude;
@@ -115,14 +119,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         // $this->plainPassword = null;
     }
 
-    public function getLatitutde(): ?string
+    public function getLatitude(): ?string
     {
-        return $this->latitutde;
+        return $this->latitude;
     }
 
-    public function setLatitutde(?string $latitutde): self
+    public function setLatitude(?string $latitude): self
     {
-        $this->latitutde = $latitutde;
+        $this->latitude = $latitude;
 
         return $this;
     }

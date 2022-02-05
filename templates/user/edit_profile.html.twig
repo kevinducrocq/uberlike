@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modification du profil
+{% endblock %}
+
+{% block body %}
+
+
+	<div class="container mt-5 mb-5">
+		<div class="row align-items-center">
+			<div class="col-md-6 offset-md-3 shadow bg-light p-5">
+				<h2 class="text-center bg-light mb-4">Modification de votre profil</h2>
+				<hr>
+				{{form_start(form)}}
+				{{form_widget(form)}}
+				<button type="submit" class="btn btn-primary">Modifier</button>
+				<a href="{{path('home')}}" class="btn btn-dark">
+					<i class="fas fa-backward"></i> Retour</a>
+				{{form_end(form)}}
+			</div>
+		</div>
+	</div>
+
+{% endblock %}
