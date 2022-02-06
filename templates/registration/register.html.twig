@@ -5,11 +5,17 @@
 
 {% block body %}
 	<div class="container mt-5 mb-5">
+		<h1 class="text-center mb-5">Inscription</h1>
+
 		<div class="row">
-			<div class="col-md-6 offset-md-3">
-				<h1 class="text-center">Inscription</h1>
-				<p class="text-center text-muted">Vous avez déjà un compte ?
-					<a href="{{path('app_login')}}">Connectez-vous</a>
+
+			<div class="col-md-6 bg-info p-4 shadow">
+				<div class="d-flex flex-column align-items-center">
+					<i class="fas fa-user fa-7x mb-3"></i>
+					<h2 class="text-center">Client</h2>
+				</div>
+				<p class="text-center fst-italic">Vous avez déjà un compte ?
+					<a href="{{path('app_login')}}" class="text-dark">Connectez-vous</a>
 				</p>
 
 				{{ form_start(registrationForm) }}
@@ -21,7 +27,29 @@
 
 				<button type="submit" class="btn btn-primary">S'inscrire</button>
 				{{ form_end(registrationForm) }}
+
+			</div>
+
+			<div class="col-md-6 bg-success text-white p-4">
+				<div class="d-flex flex-column align-items-center">
+					<i class="fas fa-car fa-7x mb-3"></i>
+					<h2 class="text-center">Chauffeur</h2>
+				</div>
+				<p class="text-center fst-italic">Vous avez déjà un compte ?
+					<a href="{{path('app_login')}}" class="text-white">Connectez-vous</a>
+				</p>
+
+				{{ form_start(registrationDriverForm) }}
+				{{ form_row(registrationDriverForm.email) }}
+				{{ form_row(registrationDriverForm.plainPassword, {
+            label: 'Mot de passe'
+        }) }}
+				{{ form_row(registrationDriverForm.agreeTerms) }}
+
+				<button type="submit" class="btn btn-primary">S'inscrire</button>
+				{{ form_end(registrationDriverForm) }}
+
 			</div>
 		</div>
 	</div>
-{% endblock %}
+</div>{% endblock %}
